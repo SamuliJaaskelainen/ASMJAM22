@@ -47,9 +47,10 @@ public class Ball : MonoBehaviour
             transform.position = newPos;
         }
 
-        if(transform.position.z < Player.Instance.transform.position.z)
+        if(transform.position.z < (Player.Instance.transform.position.z - 1.0f))
         {
             Player.Instance.LoseBall();
+            Destroy(gameObject);
         }
 
         if(dirSwapped)
@@ -69,7 +70,5 @@ public class Ball : MonoBehaviour
             speed = newSpeed;
             rotate.degreesPerSecond = speed * -100.0f;
         }
-       
-
     }
 }

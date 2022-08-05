@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3804673129695327265}
   - component: {fileID: 3444152543764616695}
   - component: {fileID: 3444152543764616694}
+  - component: {fileID: 2454530970086820794}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -97,7 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinnedMeshRenderer: {fileID: 0}
-  edgeAngleLimit: 45
+  edgeAngleLimit: 33
+  intensity: -1
   removeMaterials: 1
 --- !u!114 &3444152543764616694
 MonoBehaviour:
@@ -117,3 +119,17 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 1
+--- !u!114 &2454530970086820794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3444152543764616692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee60a5b0b3d61204b93076301e76e67f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axis: {x: 1, y: 1, z: 1}
+  degreesPerSecond: 400
