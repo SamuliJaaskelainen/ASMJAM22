@@ -36,8 +36,8 @@ namespace AudioRender
         [SerializeField] private float scaleX = -2.0f;
         [Header("Y scale of the rendering. (Audio only)")]
         [SerializeField] private float scaleY = -2.0f;
-        [Header("Intensity (in other words brightness or width) of the lines.")]
-        [SerializeField] private float intensity = 0.35f;
+        [Header("Default intensity (in other words brightness or width) of the lines.")]
+        [SerializeField] private float defaultIntensity = 0.35f;
         [Header("Random distance added to each line.")]
         public float randomOffset = 0.0f;
         [Header("Should lines behind solid geometry be clipped? Enable this to prevent see through meshes.")]
@@ -48,11 +48,13 @@ namespace AudioRender
         private class RenderObject
         {
             public float edgeAngleLimit { get; private set; }
+            public float intensity { get; private set; }
             public MeshRenderer meshRenderer; // Optional, used for occlusion culling
 
-            public RenderObject(float edgeAngleLimit = 0.0f, MeshRenderer meshRenderer = null)
+            public RenderObject(float edgeAngleLimit = 0.0f, float intensity = -1.0f, MeshRenderer meshRenderer = null)
             {
                 this.edgeAngleLimit = edgeAngleLimit;
+                this.intensity = intensity;
                 this.meshRenderer = meshRenderer;
             }
         }
@@ -62,8 +64,8 @@ namespace AudioRender
             public RenderType renderType;
             public MeshFilter meshFilter;
 
-            public StaticObject(RenderType renderType, MeshFilter meshFilter, float edgeAngleLimit = 0.0f, MeshRenderer meshRenderer = null)
-                : base(edgeAngleLimit, meshRenderer)
+            public StaticObject(RenderType renderType, MeshFilter meshFilter, float edgeAngleLimit = 0.0f, float intensity = -1.0f, MeshRenderer meshRenderer = null)
+                : base(edgeAngleLimit, intensity, meshRenderer)
             {
                 this.renderType = renderType;
                 this.meshFilter = meshFilter;
@@ -76,8 +78,8 @@ namespace AudioRender
             public SkinnedMeshRenderer skinnedMeshRenderer;
             public MeshFilter meshFilter;
 
-            public SkinnedObject(SkinnedMeshRenderer skinnedMeshRenderer, MeshFilter meshFilter, float edgeAngleLimit = 0.0f, MeshRenderer meshRenderer = null)
-                : base(edgeAngleLimit, meshRenderer)
+            public SkinnedObject(SkinnedMeshRenderer skinnedMeshRenderer, MeshFilter meshFilter, float edgeAngleLimit = 0.0f, float intensity = -1.0f, MeshRenderer meshRenderer = null)
+                : base(edgeAngleLimit, intensity, meshRenderer)
             {
                 this.skinnedMeshRenderer = skinnedMeshRenderer;
                 this.meshFilter = meshFilter;
@@ -182,13 +184,14 @@ namespace AudioRender
             public EdgeCache edgeCache { get; private set; }
             public float edgeAngleLimit { get; private set; }
             public int globalVertexOffset { get; private set; }
+            public float intensity { get; private set; }
 
             public bool[] triangleFacesCameraCache { get; private set; }
 
             private NativeArray<float3> nativeVerticesLocal; // { get; private set; }
             public NativeArray<float4> nativeVerticesClip; // { get; private set; }
 
-            public MeshCache(Mesh mesh, Transform transform, RenderType renderType, int globalVertexOffset, int skinIndex = 0, float edgeAngleLimit = 0.0f)
+            public MeshCache(Mesh mesh, Transform transform, RenderType renderType, int globalVertexOffset, int skinIndex = 0, float edgeAngleLimit = 0.0f, float intensity = -1.0f)
             {
                 this.mesh = mesh;
                 vertices = new float3[mesh.vertexCount];
@@ -203,6 +206,7 @@ namespace AudioRender
                 edgeCache = new EdgeCache(vertices.Length);
                 this.edgeAngleLimit = edgeAngleLimit;
                 this.globalVertexOffset = globalVertexOffset;
+                this.intensity = intensity;
 
                 for (int i = 0; i < triangles.Length; i += 3)
                 {
@@ -280,6 +284,8 @@ namespace AudioRender
             public int triangleVertexCount;
 
             public NativeList<float4> clippedEdges;
+
+            //public NativeList<float4> intensities;
 
             private float2 GetXY(float4 v)
             {
@@ -568,20 +574,21 @@ namespace AudioRender
         private NativeArray<int> globalDrawnEdges;
         private NativeList<float4> globalDrawnEdgesClipped;
         private NativeArray<int> globalTriangles;
+        //private NativeArray<float> globalIntensities;
         private int globalDrawnEdgeCount;
         private int globalTriangleCount;
         private int globalVertexOffset;
         private int globalDynamicVertexOffset;
         private Unity.Mathematics.Random random;
 
-        public void AddMesh(RenderType renderType, MeshFilter meshFilter, float edgeAngleLimit = 0, MeshRenderer meshRenderer = null)
+        public void AddMesh(RenderType renderType, MeshFilter meshFilter, float edgeAngleLimit = 0, float intensity = -1.0f, MeshRenderer meshRenderer = null)
         {
-            staticObjects.Add(new StaticObject(renderType, meshFilter, edgeAngleLimit, meshRenderer));
+            staticObjects.Add(new StaticObject(renderType, meshFilter, edgeAngleLimit, intensity, meshRenderer));
         }
 
-        public void AddSkinnedMesh(SkinnedMeshRenderer skinnedMeshRenderer, MeshFilter meshFilter, float edgeAngleLimit = 0, MeshRenderer meshRenderer = null)
+        public void AddSkinnedMesh(SkinnedMeshRenderer skinnedMeshRenderer, MeshFilter meshFilter, float edgeAngleLimit = 0, float intensity = -1.0f, MeshRenderer meshRenderer = null)
         {
-            skinnedObjects.Add(new SkinnedObject(skinnedMeshRenderer, meshFilter, edgeAngleLimit, meshRenderer));
+            skinnedObjects.Add(new SkinnedObject(skinnedMeshRenderer, meshFilter, edgeAngleLimit, intensity, meshRenderer));
         }
 
         public void RemoveMesh(RenderType renderType, MeshFilter meshFilter)
@@ -700,6 +707,7 @@ namespace AudioRender
             globalTriangles = new NativeArray<int>(maxTriangles, Allocator.Persistent);
             globalDrawnEdges = new NativeArray<int>(maxTriangles * 6, Allocator.Persistent);
             globalDrawnEdgesClipped = new NativeList<float4>(Allocator.Persistent);
+            //globalIntensities = new NativeList<float>(Allocator.Persistent);
             random = Unity.Mathematics.Random.CreateFromIndex(1337);
             // globalEdgeIntersectionsOffset = new NativeList<int>(Allocator.Persistent);
         }
@@ -718,6 +726,7 @@ namespace AudioRender
             globalDrawnEdges.Dispose();
             globalTriangles.Dispose();
             globalDrawnEdgesClipped.Dispose();
+            //globalIntensities.Dispose();
             // globalEdgeIntersectionsOffset.Dispose();
         }
 
@@ -726,7 +735,8 @@ namespace AudioRender
             //Debug.Log("Starting WireframeRenderer update");
 
             renderDevice.Begin();
-            renderDevice.SetIntensity(intensity);
+            renderDevice.SetIntensity(defaultIntensity);
+
             // renderDevice.SetPoint(Vector2.zero);
             // renderDevice.DrawCircle(0.5f);
 
@@ -755,6 +765,9 @@ namespace AudioRender
             double startTime = Time.realtimeSinceStartupAsDouble;
             for (int i = 0; i < meshCaches.Count; ++i)
             {
+                //renderDevice.SetIntensity(meshCaches[i].intensity > 0.0f ? meshCaches[i].intensity : defaultIntensity);
+                //Debug.Log(meshCaches[i].intensity);
+                
                 switch (meshCaches[i].renderType)
                 {
                     case RenderType.Triangle:
@@ -787,6 +800,7 @@ namespace AudioRender
                     drawnEdges = globalDrawnEdges,
                     // edgeIntersectionsOffset = globalEdgeIntersectionsOffset,
                     clippedEdges = globalDrawnEdgesClipped,
+                    //intensities = globalIntensities,
                     triangles = globalTriangles,
                     edgeVertexCount = globalDrawnEdgeCount,
                     triangleVertexCount = globalTriangleCount
@@ -830,14 +844,14 @@ namespace AudioRender
 
             foreach (StaticObject staticObject in staticObjects)
             {
-                meshCaches.Add(new MeshCache(staticObject.meshFilter.mesh, staticObject.meshFilter.transform, staticObject.renderType, globalVertexOffset, edgeAngleLimit: staticObject.edgeAngleLimit));
+                meshCaches.Add(new MeshCache(staticObject.meshFilter.mesh, staticObject.meshFilter.transform, staticObject.renderType, globalVertexOffset, 0, staticObject.edgeAngleLimit, staticObject.intensity));
                 globalVertexOffset += meshCaches[meshCaches.Count - 1].vertices.Length;
             }
 
             for (int i = 0; i < skinnedObjects.Count; ++i)
             {
                 int skinIndex = meshCaches.Count;
-                meshCaches.Add(new MeshCache(skinnedObjects[i].meshFilter.mesh, skinnedObjects[i].meshFilter.transform, RenderType.Skinned, globalVertexOffset, skinIndex, edgeAngleLimit: skinnedObjects[i].edgeAngleLimit));
+                meshCaches.Add(new MeshCache(skinnedObjects[i].meshFilter.mesh, skinnedObjects[i].meshFilter.transform, RenderType.Skinned, globalVertexOffset, skinIndex, skinnedObjects[i].edgeAngleLimit, skinnedObjects[i].intensity));
                 globalVertexOffset += meshCaches[meshCaches.Count - 1].vertices.Length;
             }
             cacheRequiresUpdate = false;

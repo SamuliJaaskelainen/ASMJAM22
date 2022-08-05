@@ -11,6 +11,9 @@ namespace AudioRender
         [Header("Edges with angle below this threshold will not be rendered.")]
         [SerializeField] float edgeAngleLimit = 0.0f;
 
+        [Header("Intensity (in other words brightness or width) of the lines. Negative falls back to default.")]
+        [SerializeField] float intensity = -1.0f;
+
         [Header("Should we remove materials?\nThis is useful for Gfx rendering.")]
         [SerializeField] bool removeMaterials;
 
@@ -64,14 +67,14 @@ namespace AudioRender
             {
                 if (WireframeRenderer.Instance)
                 {
-                    WireframeRenderer.Instance.AddSkinnedMesh(skinnedMeshRenderer, meshFilter, edgeAngleLimit, meshRenderer);
+                    WireframeRenderer.Instance.AddSkinnedMesh(skinnedMeshRenderer, meshFilter, edgeAngleLimit, intensity, meshRenderer);
                 }
             }
             else
             {
                 if (WireframeRenderer.Instance)
                 {
-                    WireframeRenderer.Instance.AddMesh(WireframeRenderer.RenderType.Triangle, meshFilter, edgeAngleLimit, meshRenderer);
+                    WireframeRenderer.Instance.AddMesh(WireframeRenderer.RenderType.Triangle, meshFilter, edgeAngleLimit, intensity, meshRenderer);
                 }
             }
         }
