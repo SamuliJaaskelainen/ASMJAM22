@@ -8,6 +8,7 @@ public class Ball : MonoBehaviour
     [SerializeField] float minSpeed = 0.5f;
     [SerializeField] float speedChangeMultiplier = 3.0f;
     [SerializeField] LayerMask layerMask;
+    [SerializeField] bool isRandom = false;
     AudioRender.Rotate rotate;
     Vector3 direction;
     RaycastHit hit;
@@ -18,7 +19,21 @@ public class Ball : MonoBehaviour
     {
         rotate = GetComponent<AudioRender.Rotate>();
         speed = maxSpeed;
-        Hit(Vector3.forward);
+        if(isRandom)
+        {
+            float randomRadius = Random.Range(0, 1.0f);
+            float randomAngle = Random.Range(0, 2 * Mathf.PI);
+            Vector3 direction = new Vector3(
+                randomRadius * Mathf.Cos(randomAngle),
+                randomRadius * Mathf.Sin(randomAngle),
+                1.0f
+            );
+            Hit(direction);
+        }
+        else
+        {
+            Hit(Vector3.forward);
+        }
     }
 
     public void Hit(Vector3 dir)
@@ -32,8 +47,8 @@ public class Ball : MonoBehaviour
         Vector3 newPos = transform.position + direction * speed * Time.deltaTime;
         if(Physics.Linecast(transform.position, newPos, out hit, layerMask))
         {
-            Debug.Log("Hit", hit.transform.gameObject);
-            Debug.DrawRay(hit.point, hit.normal, Color.white, 2.0f);
+            //Debug.Log("Hit", hit.transform.gameObject);
+            //Debug.DrawRay(hit.point, hit.normal, Color.white, 2.0f);
             Hit(Vector3.Reflect(direction, hit.normal));
 
             if(hit.transform.tag == "Paddle")

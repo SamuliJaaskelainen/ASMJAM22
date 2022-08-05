@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7963711532811537438
 Transform:
   m_ObjectHideFlags: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinnedMeshRenderer: {fileID: 0}
-  edgeAngleLimit: 0
+  edgeAngleLimit: 40
   intensity: 1
   removeMaterials: 1
 --- !u!1 &8389178491101636066
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinnedMeshRenderer: {fileID: 0}
-  edgeAngleLimit: 0
+  edgeAngleLimit: 80
   intensity: -1
   removeMaterials: 1
 --- !u!1 &8695659998659993494
