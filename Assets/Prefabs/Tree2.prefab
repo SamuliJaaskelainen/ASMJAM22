@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3844891023271520719}
   - component: {fileID: 1350863603594370309}
   - component: {fileID: 395946145677747209}
+  - component: {fileID: 2557454047120882634}
   m_Layer: 0
   m_Name: Tree2
   m_TagString: Untagged
@@ -26,9 +27,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 702499120535878864}
-  m_LocalRotation: {x: 0.0000016391275, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.34710598, z: 1.6482701}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.051292375, y: 0.051292375, z: 0.051292375}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -97,4 +98,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skinnedMeshRenderer: {fileID: 0}
   edgeAngleLimit: 54
+  intensity: -1
   removeMaterials: 1
+--- !u!64 &2557454047120882634
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702499120535878864}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7196802604745430461, guid: b43533018bb777643988c0258c363560, type: 3}

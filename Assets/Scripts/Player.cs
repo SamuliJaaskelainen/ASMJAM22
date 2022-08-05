@@ -60,6 +60,9 @@ public class Player : MonoBehaviour
                 Vector3 movement = (Vector3.up * y + Vector3.right * x) * movementSpeed * Time.deltaTime;
                 Vector3 newPos = transform.position + movement;
 
+                Vector3 targetAngles = new Vector3(y * 30.0f, x * 30.0f, 0.0f);
+                player.transform.localRotation = Quaternion.Slerp(player.transform.localRotation, Quaternion.Euler(targetAngles), Time.smoothDeltaTime * 3.0f);
+
                 if (movementArea.bounds.Contains(newPos))
                 {
                     transform.position = newPos;

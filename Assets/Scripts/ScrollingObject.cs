@@ -8,11 +8,6 @@ public class ScrollingObject : MonoBehaviour
     [SerializeField] bool isLooping = false;
     [SerializeField] float loopZ = 20.0f;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         transform.position += Vector3.back * scrollSpeed * Time.deltaTime;
