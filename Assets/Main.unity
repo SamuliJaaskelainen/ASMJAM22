@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2861ae79aae9140b7db69a0cdb5a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderDeviceType: 0
+  renderDeviceType: 2
   renderCamera: {fileID: 63259505}
   scaleX: 2
   scaleY: -2
@@ -4150,37 +4150,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1797491170}
     m_Modifications:
-    - target: {fileID: 7182622115154675330, guid: e2a08927959410e43b79edd3fcbcfb56, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182622115154675330, guid: e2a08927959410e43b79edd3fcbcfb56, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 7182622115615243843, guid: e2a08927959410e43b79edd3fcbcfb56, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182622115615243843, guid: e2a08927959410e43b79edd3fcbcfb56, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 8389178491101636065, guid: e2a08927959410e43b79edd3fcbcfb56, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8389178491101636065, guid: e2a08927959410e43b79edd3fcbcfb56, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.2800197
-      objectReference: {fileID: 0}
-    - target: {fileID: 8389178491101636065, guid: e2a08927959410e43b79edd3fcbcfb56, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.2800197
-      objectReference: {fileID: 0}
-    - target: {fileID: 8389178491101636065, guid: e2a08927959410e43b79edd3fcbcfb56, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.2800197
       objectReference: {fileID: 0}
     - target: {fileID: 8389178491101636065, guid: e2a08927959410e43b79edd3fcbcfb56, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4226,14 +4198,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: End Screen
       objectReference: {fileID: 0}
-    - target: {fileID: 9137774707179140977, guid: e2a08927959410e43b79edd3fcbcfb56, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9137774707179140977, guid: e2a08927959410e43b79edd3fcbcfb56, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2a08927959410e43b79edd3fcbcfb56, type: 3}
 --- !u!4 &2046023072 stripped
