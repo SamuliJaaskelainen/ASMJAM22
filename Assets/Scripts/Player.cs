@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (playerInput.actions["Quit"].triggered)
         {
             Application.Quit();
         }
@@ -107,7 +107,7 @@ public class Player : MonoBehaviour
                 break;
 
             case GameState.gameOver:
-                wireframeRenderer.randomOffset = 0.02f;
+                wireframeRenderer.randomOffset = 0.08f;
                 title.SetActive(false);
                 game.SetActive(false);
                 player.SetActive(false);
