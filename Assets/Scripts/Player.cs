@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public static Player Instance;
     [SerializeField] AudioRender.WireframeRenderer wireframeRenderer;
     [SerializeField] float movementSpeed;
+    [SerializeField] float gameSpeedIncrease = 0.002f;
     [SerializeField] GameObject player;
     [SerializeField] GameObject title;
     [SerializeField] GameObject gameOver;
@@ -60,8 +61,8 @@ public class Player : MonoBehaviour
                 Vector3 movement = (Vector3.up * y + Vector3.right * x) * movementSpeed * Time.deltaTime;
                 Vector3 newPos = transform.position + movement;
 
-                Vector3 targetAngles = new Vector3(y * 20.0f, x * -20.0f, 0.0f);
-                player.transform.localRotation = Quaternion.Slerp(player.transform.localRotation, Quaternion.Euler(targetAngles), Time.smoothDeltaTime * 3.0f);
+                Vector3 targetAngles = new Vector3(y * 22.0f, x * -22.0f, 0.0f);
+                player.transform.localRotation = Quaternion.Slerp(player.transform.localRotation, Quaternion.Euler(targetAngles), Time.smoothDeltaTime * 8.0f);
 
                 if (movementArea.bounds.Contains(newPos))
                 {
@@ -82,6 +83,9 @@ public class Player : MonoBehaviour
         {
             wireframeRenderer.randomOffset = 0.0f;
         }
+
+        Time.timeScale += Time.deltaTime * gameSpeedIncrease;
+        //Debug.Log(Time.timeScale);
     }
 
     public void SetGameState(GameState newGameState)
