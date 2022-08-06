@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public List<GameObject> objects = new List<GameObject>();
+    public GameObject newBall;
     float spawnerTimer;
 
     void Update()
@@ -16,6 +17,11 @@ public class Spawner : MonoBehaviour
             Transform objectGraphics = newObject.transform.GetChild(0).transform;
             objectGraphics.localEulerAngles = new Vector3(0.0f, Random.Range(0.0f, 360.0f), 0.0f);
             objectGraphics.localScale = objectGraphics.localScale * Random.Range(0.8f, 1.4f);
+
+            if(Random.value > 0.933f)
+            {
+                Instantiate(newBall, transform.position + Vector3.forward * 6.5f + Random.insideUnitSphere * 0.7f, Quaternion.identity);
+            }
         }
     }
 }

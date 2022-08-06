@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 5986532829975216690}
   - component: {fileID: 8808940949521054143}
   - component: {fileID: 7826874285436216685}
-  m_Layer: 0
+  - component: {fileID: 3562238090510585741}
+  m_Layer: 2
   m_Name: Upgrade_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,6 +100,20 @@ MonoBehaviour:
   edgeAngleLimit: 50
   intensity: -1
   removeMaterials: 1
+--- !u!114 &3562238090510585741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895972899010577402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee60a5b0b3d61204b93076301e76e67f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axis: {x: 0, y: 1, z: 0}
+  degreesPerSecond: 100
 --- !u!1 &4226580730886527153
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,7 +126,8 @@ GameObject:
   - component: {fileID: 8145995297277092542}
   - component: {fileID: 4440422402927705127}
   - component: {fileID: 7826874286818552160}
-  m_Layer: 0
+  - component: {fileID: 2177824464646597145}
+  m_Layer: 2
   m_Name: Upgrade_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,6 +214,20 @@ MonoBehaviour:
   edgeAngleLimit: 50
   intensity: -1
   removeMaterials: 1
+--- !u!114 &2177824464646597145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4226580730886527153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee60a5b0b3d61204b93076301e76e67f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axis: {x: 0, y: 1, z: 0}
+  degreesPerSecond: 100
 --- !u!1 &5225060386522260687
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +240,7 @@ GameObject:
   - component: {fileID: 1695974602161985263}
   - component: {fileID: 2942634400630191004}
   - component: {fileID: 7826874285154989332}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinnedMeshRenderer: {fileID: 0}
-  edgeAngleLimit: 0
+  edgeAngleLimit: 45
   intensity: -1
   removeMaterials: 1
 --- !u!1 &6047276890957953235
@@ -309,7 +339,7 @@ GameObject:
   - component: {fileID: 5749307276337355524}
   - component: {fileID: 846286520756870385}
   - component: {fileID: 7826874286742238914}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Upgrade_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,9 +437,12 @@ GameObject:
   - component: {fileID: 7715824826241905332}
   - component: {fileID: 3264549416035894725}
   - component: {fileID: 7826874286449736949}
-  m_Layer: 0
-  m_Name: Upgrade (1)
-  m_TagString: Untagged
+  - component: {fileID: 2102802816249492932}
+  - component: {fileID: 3785227883194495525}
+  - component: {fileID: 1034781848069376898}
+  m_Layer: 2
+  m_Name: Upgrade
+  m_TagString: NewBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -423,7 +456,7 @@ Transform:
   m_GameObject: {fileID: 6944494962762950670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.64, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.29138437, y: 0.29138437, z: 0.29138437}
   m_Children:
   - {fileID: 7471723191610270808}
   - {fileID: 2224898193525861005}
@@ -447,17 +480,17 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.25
+  - screenRelativeHeight: 0.10330135
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8808940949521054143}
     - renderer: {fileID: 7128755874615959118}
-  - screenRelativeHeight: 0.125
+  - screenRelativeHeight: 0.036850687
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 4440422402927705127}
     - renderer: {fileID: 2942634400630191004}
-  - screenRelativeHeight: 0.01
+  - screenRelativeHeight: 0.012626247
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 846286520756870385}
@@ -470,6 +503,45 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6944494962762950670}
   m_Mesh: {fileID: 4945724768336147709, guid: 476788ef89be89c448bc605300b17d19, type: 3}
+--- !u!135 &2102802816249492932
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6944494962762950670}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.47
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3785227883194495525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6944494962762950670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11fc41d34d01086459bcf565931daa8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLooping: 0
+  loopZ: 20
+--- !u!114 &1034781848069376898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6944494962762950670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7842cfaa9b4553429370f5db09bbfbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8633303386055375804
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,7 +554,7 @@ GameObject:
   - component: {fileID: 8255499844223533942}
   - component: {fileID: 7128755874615959118}
   - component: {fileID: 7826874286313552196}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -566,6 +638,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinnedMeshRenderer: {fileID: 0}
-  edgeAngleLimit: 0
+  edgeAngleLimit: 45
   intensity: -1
   removeMaterials: 1

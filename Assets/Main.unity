@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2861ae79aae9140b7db69a0cdb5a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderDeviceType: 2
+  renderDeviceType: 0
   renderCamera: {fileID: 63259505}
   scaleX: 2
   scaleY: -2
@@ -429,7 +429,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 167535842}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.407, y: 0.122, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4941005927254119466}
@@ -1402,6 +1402,7 @@ MonoBehaviour:
   objects:
   - {fileID: 188379457023124968, guid: 4f6f09e9066b926478cf981153a59c72, type: 3}
   - {fileID: 2862175454388721458, guid: 10dd567e3e3fb474da2d0a522e218f54, type: 3}
+  newBall: {fileID: 6944494962762950670, guid: cd249abb0b082dc45a90346430196d06, type: 3}
 --- !u!1001 &496426542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2052,6 +2053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wireframeRenderer: {fileID: 63259504}
   movementSpeed: 2.25
+  gameSpeedIncrease: 0.002
   player: {fileID: 167535842}
   title: {fileID: 1235972807}
   gameOver: {fileID: 1797491169}
@@ -3219,7 +3221,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6589879642592872592}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.40253472, y: 0.13717817, z: -0.052}
+  m_LocalPosition: {x: 0, y: 0, z: -0.052}
   m_LocalScale: {x: 0.61106014, y: 0.32910678, z: 0.1959327}
   m_Children: []
   m_Father: {fileID: 1013693728}
