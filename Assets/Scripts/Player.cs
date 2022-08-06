@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
                 {
                     transform.position = newPos;
                 }
+                Time.timeScale += Time.deltaTime * gameSpeedIncrease;
                 break;
 
             case GameState.gameOver:
@@ -84,7 +85,7 @@ public class Player : MonoBehaviour
             wireframeRenderer.randomOffset = 0.0f;
         }
 
-        Time.timeScale += Time.deltaTime * gameSpeedIncrease;
+        
         //Debug.Log(Time.timeScale);
     }
 
@@ -95,6 +96,7 @@ public class Player : MonoBehaviour
         switch (gameState)
         {
             case GameState.title:
+                Time.timeScale = 1.0f;
                 wireframeRenderer.randomOffset = 0.028f;
                 title.SetActive(true);
                 game.SetActive(false);
