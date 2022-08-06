@@ -15,6 +15,8 @@ public class NewBall : MonoBehaviour
         {
             Player.Instance.AquireBall(transform.position);
             Destroy(gameObject);
+
+            FMODUnity.RuntimeManager.PlayOneShotAttached("event:/SFX/BallAcquired", gameObject);
         }
     }
 }
