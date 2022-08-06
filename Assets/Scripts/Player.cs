@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
                 break;
         }
 
-        wireframeRenderer.randomOffset -= Time.deltaTime * 0.01f;
+        wireframeRenderer.randomOffset -= Time.unscaledDeltaTime * 0.01f;
         if(wireframeRenderer.randomOffset < 0.0f)
         {
             wireframeRenderer.randomOffset = 0.0f;
