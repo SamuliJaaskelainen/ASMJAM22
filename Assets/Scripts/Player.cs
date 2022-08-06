@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
                 Vector3 movement = (Vector3.up * y + Vector3.right * x) * movementSpeed * Time.deltaTime;
                 Vector3 newPos = transform.position + movement;
 
-                Vector3 targetAngles = new Vector3(y * 30.0f, x * 30.0f, 0.0f);
+                Vector3 targetAngles = new Vector3(y * 20.0f, x * -20.0f, 0.0f);
                 player.transform.localRotation = Quaternion.Slerp(player.transform.localRotation, Quaternion.Euler(targetAngles), Time.smoothDeltaTime * 3.0f);
 
                 if (movementArea.bounds.Contains(newPos))
@@ -104,8 +104,8 @@ public class Player : MonoBehaviour
                 game.SetActive(true);
                 player.SetActive(true);
                 gameOver.SetActive(false);
-                AquireBall(transform.position + Vector3.right * 0.6f);
-                AquireBall(transform.position + Vector3.left * 0.6f);
+                AquireBall(transform.position + Vector3.right * 0.6f + Vector3.forward * 4.0f);
+                AquireBall(transform.position + Vector3.left * 0.6f + Vector3.forward * 8.0f);
                 AquireBall(transform.position);
                 break;
 

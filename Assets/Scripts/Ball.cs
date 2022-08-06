@@ -72,7 +72,7 @@ public class Ball : MonoBehaviour
         {
             speed += speedChangeMultiplier * Time.deltaTime;
             speed = Mathf.Min(speed, maxSpeed);
-            rotate.degreesPerSecond = speed * 100.0f;
+            rotate.degreesPerSecond = speed * 500.0f;
         }
         else
         {
