@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2861ae79aae9140b7db69a0cdb5a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderDeviceType: 0
+  renderDeviceType: 2
   renderCamera: {fileID: 63259505}
   scaleX: 2
   scaleY: -2
