@@ -40,6 +40,7 @@ public class Ball : MonoBehaviour
     {
         direction = dir;
         // TODO: Play hit sfx
+        FMODUnity.RuntimeManager.PlayOneShotAttached("event:/SFX/BallWorldHit", gameObject);
         
     }
 
