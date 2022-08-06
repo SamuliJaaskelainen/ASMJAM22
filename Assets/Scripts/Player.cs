@@ -14,19 +14,19 @@ public class Player : MonoBehaviour
     }
 
     public static Player Instance;
+    [SerializeField] PlayerInputManager playerInputManager;
     [SerializeField] AudioRender.WireframeRenderer wireframeRenderer;
-    [SerializeField] float movementSpeed;
     [SerializeField] float gameSpeedIncrease = 0.002f;
-    [SerializeField] GameObject player;
     [SerializeField] GameObject title;
     [SerializeField] GameObject gameOver;
     [SerializeField] GameObject game;
     [SerializeField] GameObject ball;
-    [SerializeField] BoxCollider movementArea;
+    public BoxCollider movementArea;
     int balls = 0;
-    PlayerInput playerInput;
     GameState gameState = GameState.title;
-   
+    bool startPressed = false;
+    bool playerResized = false;
+
     void Awake()
     {
         Instance = this;
@@ -34,50 +34,45 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
         SetGameState(GameState.title);
+    }
+
+    public void StartPressed()
+    {
+        startPressed = true;
     }
 
     void Update()
     {
-        if (playerInput.actions["Quit"].triggered)
+        if(!playerResized && transform.childCount > 1)
         {
-            Application.Quit();
+            transform.GetChild(0).localScale *= 0.5f;
+            transform.GetChild(1).localScale *= 0.5f;
+            playerResized = true;
         }
 
-        switch(gameState)
+        switch (gameState)
         {
             case GameState.title:
-                if(playerInput.actions["Start"].triggered)
+                if(startPressed)
                 {
                     SetGameState(GameState.gamePlay);
                 }
                 break;
 
             case GameState.gamePlay:
-                float x = playerInput.actions["Right-Axis"].ReadValue<float>();
-                float y = playerInput.actions["Up-Axis"].ReadValue<float>();
-
-                Vector3 movement = (Vector3.up * y + Vector3.right * x) * movementSpeed * Time.deltaTime;
-                Vector3 newPos = transform.position + movement;
-
-                Vector3 targetAngles = new Vector3(y * 22.0f, x * -22.0f, 0.0f);
-                player.transform.localRotation = Quaternion.Slerp(player.transform.localRotation, Quaternion.Euler(targetAngles), Time.smoothDeltaTime * 8.0f);
-
-                if (movementArea.bounds.Contains(newPos))
-                {
-                    transform.position = newPos;
-                }
+                
                 Time.timeScale += Time.deltaTime * gameSpeedIncrease;
                 break;
 
             case GameState.gameOver:
-                if (playerInput.actions["Start"].triggered)
+                if (startPressed)
                 {
                     SceneManager.LoadScene(0);
                 }
                 break;
         }
+        startPressed = false;
 
         wireframeRenderer.randomOffset -= Time.unscaledDeltaTime * 0.01f;
         if(wireframeRenderer.randomOffset < 0.0f)
@@ -85,7 +80,6 @@ public class Player : MonoBehaviour
             wireframeRenderer.randomOffset = 0.0f;
         }
 
-        
         //Debug.Log(Time.timeScale);
     }
 
@@ -97,10 +91,9 @@ public class Player : MonoBehaviour
         {
             case GameState.title:
                 Time.timeScale = 1.0f;
-                wireframeRenderer.randomOffset = 0.028f;
+                wireframeRenderer.randomOffset = 0.02f;
                 title.SetActive(true);
                 game.SetActive(false);
-                player.SetActive(false);
                 gameOver.SetActive(false);
                 F_AudioManager.instance.PlayMenuTrack();
                 break;
@@ -109,7 +102,6 @@ public class Player : MonoBehaviour
                 wireframeRenderer.randomOffset = 0.008f;
                 title.SetActive(false);
                 game.SetActive(true);
-                player.SetActive(true);
                 gameOver.SetActive(false);
                 AquireBall(transform.position + Vector3.right * 0.6f + Vector3.forward * 4.0f);
                 AquireBall(transform.position + Vector3.left * 0.6f + Vector3.forward * 8.0f);
@@ -120,10 +112,9 @@ public class Player : MonoBehaviour
                 
 
             case GameState.gameOver:
-                wireframeRenderer.randomOffset = 0.08f;
+                wireframeRenderer.randomOffset = 0.07f;
                 title.SetActive(false);
                 game.SetActive(false);
-                player.SetActive(false);
                 gameOver.SetActive(true);
                 F_AudioManager.instance.StopMainTrack();
                 break;
@@ -134,7 +125,6 @@ public class Player : MonoBehaviour
     {
         --balls;
         wireframeRenderer.randomOffset = 0.008f;
-        // TODO: Play lose ball sfx
         FMODUnity.RuntimeManager.PlayOneShotAttached("event:/SFX/BallLost", gameObject);
 
         if (balls <= 0)

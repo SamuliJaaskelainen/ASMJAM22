@@ -11,12 +11,23 @@ public class NewBall : MonoBehaviour
     }
     void Update()
     {
-        if(Vector3.Distance(transform.position, Player.Instance.transform.position) < sphere.radius)
+        if(Vector3.Distance(transform.position, Player.Instance.transform.GetChild(0).position) < sphere.radius)
         {
-            Player.Instance.AquireBall(transform.position);
-            Destroy(gameObject);
-
-            FMODUnity.RuntimeManager.PlayOneShotAttached("event:/SFX/BallAcquired", gameObject);
+            AquireNewBall();
         }
+        else if(Player.Instance.transform.childCount > 1)
+        { 
+            if (Vector3.Distance(transform.position, Player.Instance.transform.GetChild(1).position) < sphere.radius)
+            {
+                AquireNewBall();
+            }
+        }
+    }
+
+    void AquireNewBall()
+    {
+        FMODUnity.RuntimeManager.PlayOneShotAttached("event:/SFX/BallAcquired", gameObject);
+        Player.Instance.AquireBall(transform.position);
+        Destroy(gameObject);
     }
 }
