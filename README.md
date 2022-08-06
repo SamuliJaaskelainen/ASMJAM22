@@ -1,9 +1,12 @@
-#Adventure Tube for ASMJAM 2022
+#Conduit for ASMJAM 2022
+Bounce balls in a tube.
+Keyboard: Space to start, arrows to move.
+Keyboard: A to start, stick to move.
 
 #Credits
 Samuli Jääskeläinen
-XXX
-XXX
+Ali Hosseini
+Joni Suojanen
 
 #Made with AudioRenderUnity
 https://github.com/ptimonen/AudioRenderUnity/

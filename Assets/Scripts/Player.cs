@@ -146,7 +146,7 @@ public class Player : MonoBehaviour
     {
         ++balls;
         GameObject newBall = Instantiate(ball, pos + Vector3.forward * 0.3f, Quaternion.identity) as GameObject;
-        newBall.GetComponent<Ball>().Hit((transform.position - pos).normalized);
+        newBall.GetComponent<Ball>().Hit((transform.position - pos).normalized, false);
     }
 
     public bool IsGameOn()
