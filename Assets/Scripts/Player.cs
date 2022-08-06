@@ -135,6 +135,7 @@ public class Player : MonoBehaviour
         --balls;
         wireframeRenderer.randomOffset = 0.008f;
         // TODO: Play lose ball sfx
+        FMODUnity.RuntimeManager.PlayOneShotAttached("event:/SFX/BallLost", gameObject);
 
         if (balls <= 0)
         {
