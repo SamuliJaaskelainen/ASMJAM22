@@ -18,6 +18,7 @@ public class F_AudioManager : MonoBehaviour
     private void Start()
     {
         MainTrack = FMODUnity.RuntimeManager.CreateInstance("event:/Music/MainTrack");
+        MenuTrack = FMODUnity.RuntimeManager.CreateInstance("event:/Music/MenuTrack");
     }
 
     public void PlayMainTrack()
@@ -29,5 +30,16 @@ public class F_AudioManager : MonoBehaviour
     {
         MainTrack.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         MainTrack.release();
+    }
+
+    public void PlayMenuTrack()
+    {
+        MenuTrack.start();
+    }
+
+    public void StopMenuTrack()
+    {
+        MenuTrack.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        MenuTrack.release();
     }
 }

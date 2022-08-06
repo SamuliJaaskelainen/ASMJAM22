@@ -100,6 +100,7 @@ public class Player : MonoBehaviour
                 game.SetActive(false);
                 player.SetActive(false);
                 gameOver.SetActive(false);
+                F_AudioManager.instance.PlayMenuTrack();
                 break;
 
             case GameState.gamePlay:
@@ -112,6 +113,7 @@ public class Player : MonoBehaviour
                 AquireBall(transform.position + Vector3.left * 0.6f + Vector3.forward * 8.0f);
                 AquireBall(transform.position);
                 F_AudioManager.instance.PlayMainTrack();
+                F_AudioManager.instance.StopMenuTrack();
                 break;
                 
 

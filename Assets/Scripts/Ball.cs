@@ -40,6 +40,7 @@ public class Ball : MonoBehaviour
     {
         direction = dir;
         // TODO: Play hit sfx
+        
     }
 
     void Update()
@@ -55,6 +56,7 @@ public class Ball : MonoBehaviour
             {
                 speed = maxSpeed;
                 dirSwapped = false;
+                FMODUnity.RuntimeManager.PlayOneShotAttached("event:/SFX/BallPlayerHit", gameObject);
             }
         }
         else
