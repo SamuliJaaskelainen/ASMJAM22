@@ -157,7 +157,7 @@ MonoBehaviour:
   renderCamera: {fileID: 0}
   scaleX: 2
   scaleY: -2
-  intensity: 0.35
+  defaultIntensity: 0.35
   randomOffset: 0
   useLineToTriangleClipping: 1
   logVerbose: 0
@@ -218,6 +218,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &72540429 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6985512016908883621, guid: 476788ef89be89c448bc605300b17d19, type: 3}
+  m_PrefabInstance: {fileID: 1253495075}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &72540433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72540429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29cda1882a65e0d4390636dee9aa8b60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinnedMeshRenderer: {fileID: 0}
+  edgeAngleLimit: 50
+  intensity: -1
+  removeMaterials: 1
 --- !u!1 &91583133 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 385397992e5a174429e83839a9043067, type: 3}
@@ -237,6 +258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skinnedMeshRenderer: {fileID: 0}
   edgeAngleLimit: 70
+  intensity: -1
   removeMaterials: 1
 --- !u!4 &91583137 stripped
 Transform:
@@ -357,6 +379,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 700246df3de2ac74985976cb43d32f3e, type: 3}
+--- !u!1 &890188132 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6620995083583131248, guid: 476788ef89be89c448bc605300b17d19, type: 3}
+  m_PrefabInstance: {fileID: 1253495075}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &890188136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890188132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29cda1882a65e0d4390636dee9aa8b60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinnedMeshRenderer: {fileID: 0}
+  edgeAngleLimit: 0
+  intensity: -1
+  removeMaterials: 1
 --- !u!1 &1001161942 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8f0346cbdf2290f468478b3689111c12, type: 3}
@@ -376,6 +419,119 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skinnedMeshRenderer: {fileID: 0}
   edgeAngleLimit: 0
+  intensity: -1
+  removeMaterials: 1
+--- !u!1 &1077672071 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 476788ef89be89c448bc605300b17d19, type: 3}
+  m_PrefabInstance: {fileID: 1253495075}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &1077672073
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077672071}
+  m_Mesh: {fileID: 4945724768336147709, guid: 476788ef89be89c448bc605300b17d19, type: 3}
+--- !u!1 &1209662772 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1968357818724871907, guid: 476788ef89be89c448bc605300b17d19, type: 3}
+  m_PrefabInstance: {fileID: 1253495075}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1209662776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209662772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29cda1882a65e0d4390636dee9aa8b60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinnedMeshRenderer: {fileID: 0}
+  edgeAngleLimit: 0
+  intensity: -1
+  removeMaterials: 1
+--- !u!1001 &1253495075
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 476788ef89be89c448bc605300b17d19, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 476788ef89be89c448bc605300b17d19, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 476788ef89be89c448bc605300b17d19, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.64
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 476788ef89be89c448bc605300b17d19, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 476788ef89be89c448bc605300b17d19, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 476788ef89be89c448bc605300b17d19, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 476788ef89be89c448bc605300b17d19, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 476788ef89be89c448bc605300b17d19, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 476788ef89be89c448bc605300b17d19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 476788ef89be89c448bc605300b17d19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 476788ef89be89c448bc605300b17d19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 476788ef89be89c448bc605300b17d19, type: 3}
+      propertyPath: m_Name
+      value: Upgrade (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 476788ef89be89c448bc605300b17d19, type: 3}
+--- !u!1 &1403695802 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4651485061285237364, guid: 476788ef89be89c448bc605300b17d19, type: 3}
+  m_PrefabInstance: {fileID: 1253495075}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1403695806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403695802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29cda1882a65e0d4390636dee9aa8b60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinnedMeshRenderer: {fileID: 0}
+  edgeAngleLimit: 50
+  intensity: -1
   removeMaterials: 1
 --- !u!1001 &1426127409
 PrefabInstance:
@@ -434,6 +590,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f0346cbdf2290f468478b3689111c12, type: 3}
+--- !u!1 &1446456600 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6213120829768863214, guid: 476788ef89be89c448bc605300b17d19, type: 3}
+  m_PrefabInstance: {fileID: 1253495075}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1446456604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446456600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29cda1882a65e0d4390636dee9aa8b60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinnedMeshRenderer: {fileID: 0}
+  edgeAngleLimit: 50
+  intensity: -1
+  removeMaterials: 1
 --- !u!1 &1656422143 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8f0346cbdf2290f468478b3689111c12, type: 3}
@@ -453,6 +630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skinnedMeshRenderer: {fileID: 0}
   edgeAngleLimit: 0
+  intensity: -1
   removeMaterials: 1
 --- !u!1 &1912748495
 GameObject:
@@ -576,4 +754,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skinnedMeshRenderer: {fileID: 0}
   edgeAngleLimit: 0
+  intensity: -1
   removeMaterials: 1
