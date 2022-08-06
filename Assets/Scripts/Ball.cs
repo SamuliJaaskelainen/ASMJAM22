@@ -36,12 +36,13 @@ public class Ball : MonoBehaviour
         }
     }
 
-    public void Hit(Vector3 dir)
+    public void Hit(Vector3 dir, bool playAudio = true)
     {
         direction = dir;
-        // TODO: Play hit sfx
-        FMODUnity.RuntimeManager.PlayOneShotAttached("event:/SFX/BallWorldHit", gameObject);
-        
+        if(playAudio && Player.Instance.IsGameOn())
+        { 
+            FMODUnity.RuntimeManager.PlayOneShotAttached("event:/SFX/BallWorldHit", gameObject);
+        }
     }
 
     void Update()
@@ -51,14 +52,18 @@ public class Ball : MonoBehaviour
         {
             //Debug.Log("Hit", hit.transform.gameObject);
             //Debug.DrawRay(hit.point, hit.normal, Color.white, 2.0f);
-            Hit(Vector3.Reflect(direction, hit.normal));
-
-            if(hit.transform.tag == "Paddle")
+           
+            bool hitPaddle = hit.transform.tag == "Paddle";
+            if (hitPaddle)
             {
                 speed = maxSpeed;
                 dirSwapped = false;
-                FMODUnity.RuntimeManager.PlayOneShotAttached("event:/SFX/BallPlayerHit", gameObject);
+                if(Player.Instance.IsGameOn())
+                { 
+                    FMODUnity.RuntimeManager.PlayOneShotAttached("event:/SFX/BallPlayerHit", gameObject);
+                }
             }
+            Hit(Vector3.Reflect(direction, hit.normal), !hitPaddle);
         }
         else
         {
