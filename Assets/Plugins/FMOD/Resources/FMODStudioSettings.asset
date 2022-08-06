@@ -353,8 +353,8 @@ MonoBehaviour:
   sourceProjectPath: 
   sourceBankPath: Assets/StreamingAssets/FMODBanks
   SourceBankPathUnformatted: 
-  BankRefreshCooldown: 5
-  ShowBankRefreshWindow: 1
+  BankRefreshCooldown: 1
+  ShowBankRefreshWindow: 0
   AutomaticEventLoading: 0
   BankLoadType: 2
   AutomaticSampleLoading: 0
@@ -387,7 +387,7 @@ MonoBehaviour:
   SharedLibraryUpdateStage: 0
   SharedLibraryTimeSinceStart: 0
   CurrentVersion: 131591
-  HideSetupWizard: 0
+  HideSetupWizard: 1
   LastEventReferenceScanVersion: 131591
   Platforms:
   - {fileID: 7155924620479172586}

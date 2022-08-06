@@ -107,7 +107,9 @@ public class Player : MonoBehaviour
                 AquireBall(transform.position + Vector3.right * 0.6f + Vector3.forward * 4.0f);
                 AquireBall(transform.position + Vector3.left * 0.6f + Vector3.forward * 8.0f);
                 AquireBall(transform.position);
+                F_AudioManager.instance.PlayMainTrack();
                 break;
+                
 
             case GameState.gameOver:
                 wireframeRenderer.randomOffset = 0.08f;
@@ -115,6 +117,7 @@ public class Player : MonoBehaviour
                 game.SetActive(false);
                 player.SetActive(false);
                 gameOver.SetActive(true);
+                F_AudioManager.instance.StopMainTrack();
                 break;
         }
     }

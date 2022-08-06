@@ -9,6 +9,7 @@ public class F_BankLoad : MonoBehaviour
 
     private void Awake()
     {
-        
+        FMODUnity.RuntimeManager.LoadBank(Bank);
+        FMODUnity.RuntimeManager.LoadBank(BankStrings);
     }
 }
