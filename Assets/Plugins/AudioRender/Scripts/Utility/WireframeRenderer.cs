@@ -737,6 +737,17 @@ namespace AudioRender
             renderDevice.Begin();
             renderDevice.SetIntensity(defaultIntensity);
 
+            if (Input.GetKey(KeyCode.F2))
+            {
+                defaultIntensity -= Time.deltaTime * 0.1f;
+                defaultIntensity = Mathf.Clamp(defaultIntensity, 0.0045f, 1.0f);
+            }
+            else if (Input.GetKey(KeyCode.F3))
+            {
+                defaultIntensity += Time.deltaTime * 0.1f;
+                defaultIntensity = Mathf.Clamp(defaultIntensity, 0.0045f, 1.0f);
+            }
+
             // renderDevice.SetPoint(Vector2.zero);
             // renderDevice.DrawCircle(0.5f);
 
@@ -767,7 +778,7 @@ namespace AudioRender
             {
                 //renderDevice.SetIntensity(meshCaches[i].intensity > 0.0f ? meshCaches[i].intensity : defaultIntensity);
                 //Debug.Log(meshCaches[i].intensity);
-                
+
                 switch (meshCaches[i].renderType)
                 {
                     case RenderType.Triangle:

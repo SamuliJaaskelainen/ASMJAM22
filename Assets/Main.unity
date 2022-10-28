@@ -158,7 +158,7 @@ MonoBehaviour:
   renderCamera: {fileID: 63259505}
   scaleX: 2
   scaleY: -2
-  defaultIntensity: 0.3
+  defaultIntensity: 0.65
   randomOffset: 0
   useLineToTriangleClipping: 1
   logVerbose: 0
